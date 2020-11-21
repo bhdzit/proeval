@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\CategoriasContreoller;
 use App\Http\Controllers\EvaluacionesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UsuariosContreoller;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,4 +20,6 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/evaluaciones', EvaluacionesController::class);
+Route::resource('/usuarios', UsuariosContreoller::class);
+Route::resource('/categorias', CategoriasContreoller::class);
 Auth::routes();
