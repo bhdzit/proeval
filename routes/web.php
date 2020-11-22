@@ -20,6 +20,10 @@ use App\Http\Controllers\UsuariosContreoller;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/evaluaciones', EvaluacionesController::class);
+Route::resource('/usuarios/nuevousuario', HomeController::class);
 Route::resource('/usuarios', UsuariosContreoller::class);
+Route::get('categorias/nuevacategoria', function(){
+return view('categoriasinput');
+});
 Route::resource('/categorias', CategoriasContreoller::class);
 Auth::routes();

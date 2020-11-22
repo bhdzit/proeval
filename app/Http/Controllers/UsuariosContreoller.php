@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Models\User;
+use PhpParser\Node\Stmt\Return_;
 
 class UsuariosContreoller extends Controller
 {
@@ -13,7 +16,8 @@ class UsuariosContreoller extends Controller
      */
     public function index()
     {
-        //
+        return view('usuarios',[
+            'usuarios'=>DB::table('usuario')->get()]);
     }
 
     /**
@@ -24,7 +28,7 @@ class UsuariosContreoller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "sad";
     }
 
     /**
@@ -35,6 +39,9 @@ class UsuariosContreoller extends Controller
      */
     public function show($id)
     {
+      //  return User::find($id);
+
+       return view('home',['usuario'=>User::find($id)]);// abort(404);
         //
     }
 
@@ -47,7 +54,22 @@ class UsuariosContreoller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'sec_last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'rol'=>['required', 'string', 'size:1',],
+        ]);
+        $user=User::find($id);
+            $user->US_NOMBRE = $request->name;
+            $user->US_NOMBRE_2 = $request->sec_name;
+            $user->US_AP_PATERNO = $request->last_name;
+            $user->US_AP_MATERNO = $request->sec_last_name;
+            $user->email = $request->email;
+            $user->US_ROL=$request->rol;
+            $user->save();
+   return redirect()->route('usuarios.index');
     }
 
     /**
@@ -58,6 +80,7 @@ class UsuariosContreoller extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return redirect()->route('usuarios.index');
     }
 }
