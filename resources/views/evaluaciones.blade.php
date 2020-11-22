@@ -40,6 +40,28 @@
                             </form>
                           </td>
                     </tr>
+                    @forelse($evaluaciones as $evaluacion)
+                        <tr>
+                          <td>{{$evaluacion->EV_ID}} </td>
+                          <td>{{$evaluacion->EV_TITULO}} </td>
+                          <td>{{$evaluacion->EV_ACTIVO}} </td>
+                         <td>100</td> 
+                          <td>30/50</td>
+                          <td>
+                                <button class="btn btn-success" onclick=""><i class="fa fa-btn fa-edit"></i></button>
+                          </td>
+                          <td>
+                            <form action="" method="POST">
+                              {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                              <button type="submit" class="btn btn-danger"><i class="fa fa-btn fa-trash"></i></button>
+                            </form>
+                          </td>
+ 
+                    </tr>
+                    @empty
+
+                    @endforelse
 
                   </tbody>
               <tfoot>
