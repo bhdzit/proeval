@@ -34,7 +34,7 @@
                                 <a class="btn btn-success" href="{{url('usuarios/'.$usuario->US_NUMBER) }}"><i class="fa fa-btn fa-edit"></i></a>
                           </td>
                           <td>
-                            <form action="" method="POST">
+                            <form action="{{url('usuarios/'.$usuario->US_NUMBER) }}" method="POST">
                               {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                               <button type="submit" class="btn btn-danger"><i class="fa fa-btn fa-trash"></i></button>

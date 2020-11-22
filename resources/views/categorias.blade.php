@@ -22,22 +22,30 @@
                 </tr>
               </thead>
                   <tbody id="SectorListTable">
-                  <tr>
-                      <td>1</td>
-                      <td>GNR</td>
-                      <td>GENERALIDADES</td>
-                      <td>ACTIVO</td>
-                      <td>
-                                <button class="btn btn-success" onclick=""><i class="fa fa-btn fa-edit"></i></button>
+                  @php $i=1@endphp
+
+                    @forelse($categorias as $categoria)
+                        <tr>
+                          <td>{{$i}}</td>
+                          <td>{{$categoria->CA_IDENTIFICADOR}} </td>
+                          <td>{{$categoria->CA_NOMBRE}} </td>
+                          <td>{{$categoria->CAT_ACTIVO}}</td>
+ 
+                          <td>
+                                <a class="btn btn-success" href="{{url('categorias/'.$categoria->CA_IDENTIFICADOR) }}"><i class="fa fa-btn fa-edit"></i></a>
                           </td>
                           <td>
-                            <form action="" method="POST">
+                            <form action="{{url('categorias/'.$categoria->CA_IDENTIFICADOR) }}" method="POST">
                               {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                               <button type="submit" class="btn btn-danger"><i class="fa fa-btn fa-trash"></i></button>
                             </form>
                           </td>
                     </tr>
+                    @php $i++; @endphp
+                    @empty
+
+                    @endforelse
 
                   </tbody>
               <tfoot>
