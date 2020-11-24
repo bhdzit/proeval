@@ -17,7 +17,9 @@ class UsuariosContreoller extends Controller
     public function index()
     {
         return view('usuarios',[
-            'usuarios'=>DB::table('usuario')->get()]);
+            'usuarios'=>DB::table('usuario')
+            ->leftJoin('prueba','US_NUMBER','=','PR_USUARIO')
+            ->get()]);
     }
 
     /**

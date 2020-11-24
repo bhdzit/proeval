@@ -24,8 +24,8 @@ class User extends Authenticatable
         'US_NOMBRE_2',
         'US_AP_PATERNO',
         'US_AP_MATERNO',
-        'email',
-        'password',
+        'US_EMAIL',
+        'US_AUT_TEXT',
     ];
 
     /**
@@ -45,4 +45,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getAuthPassword() {
+        return $this->US_AUT_TEXT;
+    }
 }

@@ -5,7 +5,7 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Evaluaciones</h3>
-                <button style="margin-right: 30px;" href="pagos\agregarpago" class="btn btn-primary pull-right" onclick="scanQR()">Agregar Evaluacion</button>
+                <a style="margin-right: 30px;" href="evaluaciones/nuevaevaluacion" class="btn btn-primary pull-right">Agregar Evaluacion</a>
             </div>
             <div class="box-body">
 
@@ -23,23 +23,6 @@
                 </tr>
               </thead>
                   <tbody id="SectorListTable">
-                  <tr>
-                      <td>1</td>
-                      <td>Examen Calculo II</td>
-                      <td>Activo</td>
-                      <td>10</td>
-                      <td>10/50</td>
-                      <td>
-                                <button class="btn btn-success" onclick=""><i class="fa fa-btn fa-edit"></i></button>
-                          </td>
-                          <td>
-                            <form action="" method="POST">
-                              {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                              <button type="submit" class="btn btn-danger"><i class="fa fa-btn fa-trash"></i></button>
-                            </form>
-                          </td>
-                    </tr>
                     @forelse($evaluaciones as $evaluacion)
                         <tr>
                           <td>{{$evaluacion->EV_ID}} </td>
@@ -48,10 +31,10 @@
                          <td>100</td> 
                           <td>30/50</td>
                           <td>
-                                <button class="btn btn-success" onclick=""><i class="fa fa-btn fa-edit"></i></button>
+                                <a class="btn btn-success" href="{{url('evaluaciones/'.$evaluacion->EV_ID) }}"><i class="fa fa-btn fa-edit"></i></a>
                           </td>
                           <td>
-                            <form action="" method="POST">
+                            <form action="{{url('evaluaciones/'.$evaluacion->EV_ID)}}" method="POST">
                               {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                               <button type="submit" class="btn btn-danger"><i class="fa fa-btn fa-trash"></i></button>

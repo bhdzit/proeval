@@ -93,7 +93,7 @@ if(!$update){
                     <div class="form-group row">
 
                         <div class="col-sm-3">
-                            <input style="margin-bottom:0" type="text" class="form-control swal2-input" id="wc_name" name="email" placeholder="Correo" required value="@if($update && !$haserrors){{$usuario->email }}@endif{{old('email')}}">
+                            <input style="margin-bottom:0" type="text" class="form-control swal2-input" id="wc_name" name="US_EMAIL" placeholder="Correo" required value="@if($update && !$haserrors){{$usuario->US_EMAIL }}@endif{{old('email')}}">
                             @error("email")
                             <div class=" alert-danger" role="alert">
                                 <strong>¡Error al Cargar Usuario!</strong>Correo de Usuario requerido

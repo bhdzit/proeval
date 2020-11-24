@@ -122,11 +122,16 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MENU</li>
           <!-- Optionally, you can add icons to the links -->
+         
           <li class="{{setActive('home')}}"><a href="{{ url('home/') }}"><i class="fas fa-digital-tachograph"></i> <span>Mis Datos</span></a></li>
+          @if(auth()->user()->US_ROL=="A")
           <li class="{{setActive('evaluaciones')}}"><a href="{{ url('evaluaciones/') }}"><i class="fas fa-stream"></i> <span> Evaluaciones</span></a></li>
+          <li class="{{setActive('preguntas')}}"><a href="{{ url('preguntas/') }}"><i class="fas fa-tasks"></i><span>  Preguntas</span></a></li>
           <li class="{{setActive('usuarios')}}"><a href="{{ url('usuarios/') }}"><i class="fas fa-users"></i><span>Usuarios</span></a></li>
           <li class="{{setActive('categorias')}}"><a href="{{ url('categorias/') }}"><i class="fas fa-book-reader"></i> <span> Categorias</span></a></li>
-         
+          @else
+          <li class="{{setActive('evaluacion')}}"><a href="{{ url('evaluacion/') }}"><i class="fas fa-book-reader"></i><span>Evaluacion</span></a></li>
+         @endif
         <!--  <li class="treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>

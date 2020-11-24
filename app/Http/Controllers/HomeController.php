@@ -34,7 +34,7 @@ class HomeController extends Controller
             'sec_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'sec_last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:usuario'],
+            'US_EMAIL' => ['required', 'string', 'email', 'max:255', 'unique:usuario'],
             'rol'=>['required', 'string', 'size:1',],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -44,8 +44,8 @@ class HomeController extends Controller
             'US_NOMBRE_2' => $request->sec_name,
             'US_AP_PATERNO' => $request->last_name,
             'US_AP_MATERNO' => $request->sec_last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'US_EMAIL' => $request->US_EMAIL,
+            'US_AUT_TEXT' => Hash::make($request->password),
 
         ]);
 
