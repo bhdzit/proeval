@@ -63,10 +63,10 @@ if(!$update){
                             @enderror
                         </div>
                         <div class="col-sm-3">
-                            <input style="margin-bottom:0" type="text" class="form-control swal2-input" id="wc_name" name="sec_name" placeholder="Segundo Nombre" value="@if($update && !$haserrors){{$usuario->US_NOMBRE_2 }}@endif{{old('sec_name')}}">
+                            <input style="margin-bottom:0" type="text" class="form-control swal2-input"  name="sec_name" placeholder="Segundo Nombre" value="@if($update && !$haserrors){{$usuario->US_NOMBRE_2 }}@endif{{old('sec_name')}}">
                             @error("sec_name")
                             <div class=" alert-danger" role="alert">
-                                <strong>¡Error al Cargar Usuario!</strong>Nombre de Usuario requerido
+                            <strong>{{ $message }}</strong>
                             </div>
                             @enderror
                         </div>
@@ -93,13 +93,13 @@ if(!$update){
                     <div class="form-group row">
 
                         <div class="col-sm-3">
-                            <input style="margin-bottom:0" type="text" class="form-control swal2-input" id="wc_name" name="US_EMAIL" placeholder="Correo" required value="@if($update && !$haserrors){{$usuario->US_EMAIL }}@endif{{old('email')}}">
-                            @error("email")
+                            <input style="margin-bottom:0" type="text" class="form-control swal2-input" id="wc_name" name="US_EMAIL" placeholder="Correo" required value="@if($update && !$haserrors){{$usuario->US_EMAIL }}@endif{{old('US_EMAIL')}}">
+                            @error("US_EMAIL")
                             <div class=" alert-danger" role="alert">
-                                <strong>¡Error al Cargar Usuario!</strong>Correo de Usuario requerido
+                                <strong>¡Error al Cargar Usuario!</strong>{{ $message }}
                             </div>
                             @enderror
-                        </div>
+                    </div>
 
                         <div class="col-sm-3">
                             <input style="margin-bottom:0" type="password" class="form-control swal2-input" id="wc_name" name="password" placeholder="Contraseña" required value="">

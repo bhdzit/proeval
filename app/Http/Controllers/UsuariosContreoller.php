@@ -58,9 +58,10 @@ class UsuariosContreoller extends Controller
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
+            'sec_name' => [ 'string', 'max:255','nullable'],
             'last_name' => ['required', 'string', 'max:255'],
             'sec_last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
+            'US_EMAIL' => ['required', 'string', 'email', 'max:255'],
             'rol'=>['required', 'string', 'size:1',],
         ]);
         $user=User::find($id);
@@ -68,7 +69,7 @@ class UsuariosContreoller extends Controller
             $user->US_NOMBRE_2 = $request->sec_name;
             $user->US_AP_PATERNO = $request->last_name;
             $user->US_AP_MATERNO = $request->sec_last_name;
-            $user->email = $request->email;
+            $user->US_EMAIL = $request->US_EMAIL;
             $user->US_ROL=$request->rol;
             $user->save();
    return redirect()->route('usuarios.index');

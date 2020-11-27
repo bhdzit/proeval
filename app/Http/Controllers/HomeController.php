@@ -31,7 +31,7 @@ class HomeController extends Controller
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
-            'sec_name' => ['required', 'string', 'max:255'],
+            'sec_name' => ['string', 'max:255','nullable'],
             'last_name' => ['required', 'string', 'max:255'],
             'sec_last_name' => ['required', 'string', 'max:255'],
             'US_EMAIL' => ['required', 'string', 'email', 'max:255', 'unique:usuario'],
