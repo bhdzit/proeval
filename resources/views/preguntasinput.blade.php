@@ -84,12 +84,12 @@
                         </div>
                     </div>
                     <div class="box-header">
-                        <h3 class="box-title">Preguntas</h3>
+                        <h3 class="box-title">Respuestas</h3>
                         <a style="margin-right: 14px;" class="btn btn-primary pull-right" onclick="addRespuesta()"><i class="fas fa-plus"></i></a>
                     </div>
 
                     <div id="respuestas_div">
-                        <div class="form-group row" hidden id="respusta_content">
+                        <div class="form-group row" @isset($respuestas) hidden @endisset id="respusta_content">
                             <div class="col-sm-5">
                                 <input style="margin-bottom:0" type="textarea" class="form-control @error('name') is-invalid @enderror" name="ITD_RESPUESTA" id="ITD_RESPUESTA"  placeholder="Respuesta" value="{{old('sec_name')}}">
 

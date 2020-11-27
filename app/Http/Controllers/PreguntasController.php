@@ -16,7 +16,7 @@ class PreguntasController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'ITEM_ID' => ['required', 'string', 'max:7', 'unique:ITEM'],
+            'ITEM_ID' => ['required', 'string', 'max:7', 'unique:item'],
         
         ]);
         $pregunta = new Pregunta();
