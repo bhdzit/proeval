@@ -12,9 +12,9 @@
                     @csrf
                     <div class="form-group row">
                         <div class="col-sm-2">
-                            <input style="margin-bottom:0" type="text" class="form-control @error('name') is-invalid @enderror" name="ITEM_ID" placeholder="GP00001" value="@isset($pregunta){{$pregunta->ITEM_ID}}@endisset{{old('sec_name')}}">
+                            <input style="margin-bottom:0" type="text" class="form-control @error('name') is-invalid @enderror" name="ITEM_ID" placeholder="GP00001" value="@isset($pregunta){{$pregunta->ITEM_ID}}@endisset{{old('ITEM_ID')}}">
 
-                            @error("ITEM_PREGUNTA")
+                            @error("ITEM_ID")
                             <div class=" alert-danger" role="alert">
                                 <strong>¡Error al Cargar Usuario!</strong>Nombre de Usuario requerido
                             </div>

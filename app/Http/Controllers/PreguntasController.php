@@ -17,7 +17,6 @@ class PreguntasController extends Controller
     {
         $this->validate($request, [
             'ITEM_ID' => ['required', 'string', 'max:7', 'unique:item'],
-        
         ]);
         $pregunta = new Pregunta();
         $pregunta->ITEM_ID=$request->ITEM_ID;
@@ -43,6 +42,7 @@ class PreguntasController extends Controller
         return redirect()->route('preguntas.index');
     }
     public function destroy($id){
+        Respuestas::where('ITD_ITEM',$id)->delete();
         Pregunta::destroy($id);
         return redirect()->route('preguntas.index');
     }
