@@ -103,7 +103,7 @@ class EvaluacionesController extends Controller
      */
     public function destroy($id)
     {
-        EvaluacionDetalles::destroy($id);
+      //  EvaluacionDetalles::destroy($id);
         Evaluacion::destroy($id);
      
         return redirect()->route('evaluaciones.index');;

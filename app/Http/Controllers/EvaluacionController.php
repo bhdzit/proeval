@@ -6,7 +6,7 @@ use App\Models\Prueba;
 use Illuminate\Http\Request;
 use App\Models\Pregunta;
 use App\Models\PruebaDetalles;
-
+use DB;
 class EvaluacionController extends Controller
 {
     /**
@@ -16,8 +16,10 @@ class EvaluacionController extends Controller
      */
     public function index()
     {
-        return view("realisarevaluacion",['prueba'=>Prueba::where('PR_USUARIO',auth()->user()->US_NUMBER)->get(),
-        'respuestas'=>PruebaDetalles::where('PR_BY_USER',auth()->user()->US_NUMBER)->get()]);
+        $id=auth()->user()->US_NUMBER;
+        return view("realisarevaluacion",
+        ['prueba'=>DB::select('call getPrebaActiva('.$id.')'),
+        'respuestas'=>DB::select('call getCalifiacion('.$id.')')]);
     }
 
     /**
