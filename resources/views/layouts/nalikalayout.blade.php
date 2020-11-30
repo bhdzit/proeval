@@ -88,12 +88,17 @@
               <i class="fas fa-house-user"></i>
                 <span>Inicio</span>
               </a>
-
             </li>
             <li class="active">
               <a href="{{ url('usuarios/') }}">
               <i class="fas fa-users"></i>
                 <span>Usuarios</span>
+              </a>
+            </li>
+            <li class="active">
+              <a href="{{url('preguntas/') }}">
+              <i class="fas fa-question"></i>
+                <span>preguntas</span>
               </a>
             </li>
             <li class="active">

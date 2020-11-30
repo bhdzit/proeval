@@ -13,8 +13,7 @@ class Subcategorias extends Model
 
 
     protected $fillable = [
- 'SB_ID',
- 'SB_CVE_CATEGORI',
+ 'SB_CVE_CATEGORIA',
  'SB_DESCRIPCION',
  'SB_ACTIVO',    
     ];

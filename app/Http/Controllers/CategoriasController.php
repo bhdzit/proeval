@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorias;
 use Illuminate\Http\Request;
 
 class CategoriasController extends Controller
@@ -13,7 +14,7 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-        //
+        return view('categoriaslist',['categorias'=>Categorias::get()]);
     }
 
     /**
@@ -24,7 +25,19 @@ class CategoriasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'CA_IDENTIFICADOR' => ['required', 'string', 'max:5'],
+            'CA_NOMBRE' => ['required', 'string', 'max:45'],
+            'CAT_ACTIVO' => ['required', 'string', 'size:1'],
+
+        ]);
+
+        Categorias::create([
+        'CA_IDENTIFICADOR'=>$request->CA_IDENTIFICADOR,
+        'CA_NOMBRE'=>$request->CA_NOMBRE,
+        'CAT_ACTIVO'=>$request->CAT_ACTIVO,
+        ]);
+        return redirect()->route('categorias.index');
     }
 
     /**
@@ -35,7 +48,7 @@ class CategoriasController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('categoriainput',['categoria'=>Categorias::find($id)]);
     }
 
     /**
@@ -47,7 +60,12 @@ class CategoriasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categoria=Categorias::find($id);
+        $categoria->CA_IDENTIFICADOR=$request->CA_IDENTIFICADOR;
+        $categoria->CA_NOMBRE=$request->CA_NOMBRE;
+        $categoria->CAT_ACTIVO=$request->CAT_ACTIVO;
+        $categoria->save();
+        return redirect()->route('categorias.index');
     }
 
     /**
@@ -58,6 +76,7 @@ class CategoriasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Categorias::destroy($id);
+        return redirect()->route('categorias.index');
     }
 }
