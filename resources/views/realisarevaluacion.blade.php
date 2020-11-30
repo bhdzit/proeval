@@ -12,7 +12,7 @@
                 <H1>No tienes evaluaciones activas, Consulta con tu profesor</H1>
                 @else
 
-                <H1>Una vez empezada la evaluacion no se podra dentenersdfsdfs</H1>
+                <H1>Una vez empezada la evaluacion no se podra dentener</H1>
                 <a style="margin-right: 30px;" href="prueba" class="btn btn-primary ">Realizar Evaluacion</a>
                 @endif
 
