@@ -24,8 +24,9 @@
                 for($i=0;$i<count($respuestas);$i++)
                 $puntos+=$respuestas[$i]->ITD_VALOR
                 @endphp
-                @endif
+              
                <strong> Obtuviste {{$puntos}} puntos.</strong></H1>
+               @endif
             </div>
             <div class="box-body">
             </div>
