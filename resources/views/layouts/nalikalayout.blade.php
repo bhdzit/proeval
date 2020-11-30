@@ -102,13 +102,13 @@
                 <span>Evaluaciones</span>
               </a>
             </li><li class="active">
-              <a href="{{ url('home/') }}">
+              <a href="{{ url('categorias/') }}">
               <i class="fas fa-tag"></i>
                 <span>Categorias</span>
               </a>
             </li>
             <li class="active">
-              <a href="{{ url('home/') }}">
+              <a href="{{ url('subcategorias/') }}">
               <i class="fas fa-tags"></i>
                 <span>Subcategoria</span>
               </a>
