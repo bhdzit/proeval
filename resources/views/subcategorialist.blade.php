@@ -12,7 +12,7 @@
                                     <i class="icon nalika-home"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Informacion de Categorias</h2>
+                                    <h2>Informacion de Subategorias</h2>
                                     <p>Bienvendio<span class="bread-ntd"> a Proeval</span></p>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
                     <table>
                         <tr>
                             <th>No.</th>
-                            <th>Categoria</th>
+                            <th>Subcategoria</th>
                             <th>Descripcion</th>
                             <th>Setting</th>
                         </tr>

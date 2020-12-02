@@ -114,8 +114,8 @@ if(count(request()->segments())<2)$update=true; } @endphp @section('content') <d
                                                         @enderror
                                                     </div>
 
-                                                    <select class="input-group mg-b-pro-edt form-control pro-edt-select form-control-primary" name="US_ROL">
-                                                        <option value="U">Tipo de Usuario</option>
+                                                    <select @if(auth()->user()->US_ROL=="U")disabled @endif id="US_ROL" class="input-group mg-b-pro-edt form-control pro-edt-select form-control-primary" name="US_ROL">
+                                                        <option >Tipo de Usuario</option>
                                                         <option value="U">Usuario</option>
                                                         <option value="A">Adminsitrador</option>
                                                         @error("US_ROL")
@@ -153,3 +153,8 @@ if(count(request()->segments())<2)$update=true; } @endphp @section('content') <d
         </div>
     </div>
     @stop
+    @section('script')
+<script type="text/javascript">
+    $("#US_ROL").val("{{$usuario->US_ROL}}");
+</script>
+@endsection
