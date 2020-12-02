@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\EvaluacionesController;
+use App\Http\Controllers\ExamenController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PreguntasController;
+use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\SubcategoriasController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +31,6 @@ Route::resource('/evaluaciones',EvaluacionesController::class)->middleware('auth
 Route::resource('/categorias',CategoriasController::class)->middleware('auth');
 Route::resource('/subcategorias',SubcategoriasController::class)->middleware('auth');
 Route::resource('/preguntas',PreguntasController::class)->middleware('auth');
+Route::resource('/examen',ExamenController::class)->middleware('auth');
+Route::resource('/prueba',PruebaController::class)->middleware('auth');
+

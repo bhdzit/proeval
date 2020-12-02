@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-status-wrap">
-                    <h4>Lista de Evaluaciones</h4>
+                    <h4>Lista de Categorias</h4>
                     <div class="add-product">
                         <a href="categorias/newcategoria">Agregar Categoria</a>
                     </div>

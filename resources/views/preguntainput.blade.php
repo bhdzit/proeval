@@ -32,7 +32,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <form id="AddUserForm" method="POST" action="@isset($evaluacion){{url('evaluaciones/'.$evaluacion->EV_ID)}}@else{{route('evaluaciones.store')}}@endisset">
+                    <form id="AddUserForm" method="POST" action="{{route('preguntas.store')}}">
 
                         <div class="review-tab-pro-inner">
                             <ul id="myTab3" class="tab-review-design">
@@ -56,11 +56,13 @@
                                                 @enderror
                                             </div>
                                             <div class="input-group mg-b-pro-edt">
-                                                <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                <select name="EV_ACTIVO" class="form-control @error('EV_ACTIVO') is-invalid @enderror">
+                                                <span class="input-group-addon"><i class="icon nalika-info" aria-hidden="true"></i></span>
+                                                <select name="ITEM_SUB_CATEGORIA" class="form-control @error('EV_ACTIVO') is-invalid @enderror">
 
-                                                    <option value="A">Activo</option>
-                                                    <option value="N">No Vigente</option>
+                                                    <option disabled value="A">Subcategoria</option>
+                                                    @foreach($subcategorias as $subcategoria)
+                                                    <option value="{{$subcategoria->SB_ID}}">{{$subcategoria->SB_CVE_CATEGORIA}}</option>
+                                                    @endforeach
                                                 </select>
                                                 @error("name")
                                                 <div class=" alert-danger" role="alert">
@@ -69,9 +71,9 @@
                                                 @enderror
                                             </div>
                                             <div class="input-group mg-b-pro-edt">
-                                                <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                <select name="EV_ACTIVO" class="form-control @error('EV_ACTIVO') is-invalid @enderror">
-
+                                                <span class="input-group-addon"><i class="icon nalika-info" aria-hidden="true"></i></span>
+                                                <select name="ITEM_ACTIVO" class="form-control @error('name') is-invalid @enderror">
+                                                    <option disabled value="A">Estado</option>
                                                     <option value="A">Activo</option>
                                                     <option value="N">No Vigente</option>
                                                 </select>
@@ -84,7 +86,7 @@
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="input-group mg-b-pro-edt">
-                                                <span class="input-group-addon"><i class="icon nalika-info" aria-hidden="true"></i></span>
+                                                <span class="input-group-addon"><i class="fas fa-question-circle" aria-hidden="true"></i></span>
                                                 <input type="text" class="form-control" name="ITEM_PREGUNTA" placeholder="Pregunta" value="@isset($pregunta){{$pregunta->ITEM_PREGUNTA}}@endisset{{old('sec_name')}}">
                                                 @error("EV_ID")
                                                 <div class=" alert-danger" role="alert">
@@ -93,11 +95,13 @@
                                                 @enderror
                                             </div>
                                             <div class="input-group mg-b-pro-edt">
-                                                <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                <select name="EV_ACTIVO" class="form-control @error('EV_ACTIVO') is-invalid @enderror">
+                                                <span class="input-group-addon"><i class="icon nalika-info" aria-hidden="true"></i></span>
+                                                <select name="ITEM_TIPO_PREGUNTA" class="form-control @error('name') is-invalid @enderror">
 
-                                                    <option value="A">Activo</option>
-                                                    <option value="N">No Vigente</option>
+                                                    <option disabled value="A">Tipo de pregunta</option>
+                                                    @foreach($tipo_preguntas as $tipo_pregunta)
+                                                    <option>{{$tipo_pregunta->TP_ID}}</option>
+                                                    @endforeach
                                                 </select>
                                                 @error("name")
                                                 <div class=" alert-danger" role="alert">
@@ -107,7 +111,7 @@
                                             </div>
                                             <div class="input-group mg-b-pro-edt">
                                                 <span class="input-group-addon"><i class="icon nalika-info" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="ITEM_ID" placeholder="GP00001" value="@isset($pregunta){{$pregunta->ITEM_ID}}@endisset{{old('ITEM_ID')}}">
+                                                <input type="text" class="form-control" name="ITEM_RETROALIMENTACION" placeholder="Retroalementacion" value="@isset($pregunta){{$pregunta->ITEM_RETROALIMENTACION}}@endisset{{old('sec_name')}}">
                                                 @error("EV_ID")
                                                 <div class=" alert-danger" role="alert">
                                                     <strong>¡Error al Cargar Usuario!</strong>Nombre de Usuario requerido
@@ -132,9 +136,73 @@
                             <ul id="myTab3" class="tab-review-design">
                                 <li class="active"><a href="#description"><i class="icon nalika-edit" aria-hidden="true"></i>Respuestas</a></li>
                                 <div class="add-product">
-                                    <a href="preguntas/newpregunta">Agregar Pregunta</a>
+                                    <a style="top: auto;" onclick="addRespuesta()">Agregar Respuesta</a>
                                 </div>
                             </ul>
+
+                            <div id="myTabContent" class="tab-content custom-product-edit">
+                                <div class="product-tab-list tab-pane fade active in" id="description">
+                                    <div id="respuestas_div">
+                                        <div class="row" id="respusta_content">
+                                            <div class="col-lg-5 col-md-6 col-sm-6 col-xs-3">
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" name="ITD_RESPUESTA" id="ITD_RESPUESTA"  placeholder="Respuesta" value="{{old('sec_name')}}">
+                                                    @error("EV_ID")
+                                                    <div class=" alert-danger" role="alert">
+                                                        <strong>¡Error al Cargar Usuario!</strong>Nombre de Usuario requerido
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-3">
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="icon nalika-info" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control"  name="ITD_RETRO_RESPUESTA" id=ITD_RETRO_RESPUESTA placeholder="Retroaliemtacion" value="{{old('sec_name')}}">
+                                                    @error("EV_ID")
+                                                    <div class=" alert-danger" role="alert">
+                                                        <strong>¡Error al Cargar Usuario!</strong>Nombre de Usuario requerido
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-2 col-md-6 col-sm-6 col-xs-3">
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="icon nalika-info" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" id="ITD_VALOR" name="ITD_VALOR" placeholder="Valoracion" value="{{old('sec_name')}}">
+                                                    @error("EV_ID")
+                                                    <div class=" alert-danger" role="alert">
+                                                        <strong>¡Error al Cargar Usuario!</strong>Nombre de Usuario requerido
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-1 col-md-6 col-sm-6 col-xs-3">
+                                                <div class="input-group mg-b-pro-edt">
+                                                    
+                                                    <a id="eliminar" data-toggle="tooltip" title="Trash" class="form-control pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                   
+                                                </div>
+                                            </div>
+
+                                            
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="text-center custom-pro-edt-ds">
+                                                @if(count(request()->segments())==2){
+                                                <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Save
+                                                </button>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -145,3 +213,24 @@
 
 
 @stop
+@section('script')
+<script type="text/javascript">
+    const respuestaText = $("#respuestas_div").html();
+    var i = 1;
+
+    function addRespuesta() {
+        var respuestaHTML = $(respuestaText);
+        var d = document.createDocumentFragment();
+        console.log(respuestaHTML);
+        d.appendChild(respuestaHTML[0]);
+        d.getElementById("ITD_RESPUESTA").name = "ITD_RESPUESTA" + i;
+        d.getElementById("ITD_RETRO_RESPUESTA").name = "ITD_RETRO_RESPUESTA" + i;
+        d.getElementById("ITD_VALOR").name = "ITD_VALOR" + i;
+        d.getElementById('eliminar').addEventListener("click", function(evt) {
+            $(this).closest('#respusta_content').remove();
+        });
+        $("#respuestas_div").append(d);
+        i++;
+    }
+</script>
+@endsection

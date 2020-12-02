@@ -114,7 +114,7 @@ if(count(request()->segments())<2)$update=true; } @endphp @section('content') <d
                                                         @enderror
                                                     </div>
 
-                                                    <select  class="input-group mg-b-pro-edt form-control pro-edt-select form-control-primary" name="US_ROL">
+                                                    <select class="input-group mg-b-pro-edt form-control pro-edt-select form-control-primary" name="US_ROL">
                                                         <option value="U">Tipo de Usuario</option>
                                                         <option value="U">Usuario</option>
                                                         <option value="A">Adminsitrador</option>
@@ -126,7 +126,7 @@ if(count(request()->segments())<2)$update=true; } @endphp @section('content') <d
                                                     </select>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-unlocked" aria-hidden="true"></i></span>
-                                                        <input type="password" class="form-control" placeholder="Confirma Contraseña" name="password_confirmation"> 
+                                                        <input type="password" class="form-control" placeholder="Confirma Contraseña" name="password_confirmation">
                                                     </div>
 
                                                 </div>

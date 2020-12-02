@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use DB;
 class UsuariosController extends Controller
 {
     /**
@@ -14,7 +15,10 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        return view('usuarios',["usuarios"=>User::get()]);
+        return view('usuarios',[
+            'usuarios'=>DB::table('usuario')
+            ->leftJoin('prueba','US_NUMBER','=','PR_USUARIO')
+            ->get()]);
     }
 
     /**

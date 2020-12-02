@@ -72,3 +72,24 @@
     </div>
 </div>
 @stop
+@section('script')
+  <script type="text/javascript">
+ 
+
+    function setPrueba(id, bool) {
+     
+      $.ajax({
+          method: "POST",
+          url: "{{route('examen.store')}}",
+          data: {
+            id: id,
+            bool: bool.checked,
+            _token:"{{csrf_token()}}"
+          }
+        })
+        .done(function(msg) {
+          //alert("Data Saved: " + msg);
+        });
+    }
+  </script>
+  @stop

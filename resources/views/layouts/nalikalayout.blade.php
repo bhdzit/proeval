@@ -89,6 +89,7 @@
                 <span>Inicio</span>
               </a>
             </li>
+            @if(auth()->user()->US_ROL=="A")
             <li class="active">
               <a href="{{ url('usuarios/') }}">
               <i class="fas fa-users"></i>
@@ -118,6 +119,14 @@
                 <span>Subcategoria</span>
               </a>
             </li>
+            @else
+            <li class="active">
+              <a href="{{ url('examen/') }}">
+              <i class="fas fa-file-alt"></i>
+                <span>Examen</span>
+              </a>
+            </li>
+            @endif
           </ul>
         </nav>
       </div>
@@ -264,6 +273,8 @@
   <!-- main JS
 		============================================ -->
   <script src="/js/main.js"></script>
+  @yield('script');
+
 </body>
 
 </html>
